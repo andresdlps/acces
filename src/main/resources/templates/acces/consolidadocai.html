@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+    <head>
+
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+
+        <title>ACCes</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- Theme CSS -->
+        <link href="../css/acces.css" rel="stylesheet"/>
+
+        <!-- Custom Fonts -->
+        <link href="../vendor/morrisjs/morris.css" rel="stylesheet"/>
+        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../vendor/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet"  type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body id="page-top" class="index">
+
+        <!-- Navigation -->
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="navbar-right header-text">ACCes</div>
+                    <a href="#" class="navbar-brand logo" style="margin-left: -40px;"><img src="../img/dnp_logo.png"/></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse menu" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="index">Inicio</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="datos">Datos</a>
+                        </li>
+                        <li class="page-scroll active">
+                            <a href="calcular">Calcular</a>
+                        </li>
+                        <li class="page-scroll">
+                            <a href="ayuda">Ayuda</a>
+                        </li>
+                        <li class="page-scroll">
+                            <form action="#" th:action="@{/logout}" method="post">
+                                <a class="botonlogout" href="#" onclick="this.parentNode.submit()">Cerrar sesión</a>
+                            </form>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section class="consolidado">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Mortalidad en menores de 5 años y en mujeres mayores a 15 años
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-pills">
+                                    <li class="active">
+                                        <a id="tab11" href="#p1muertesm-tab" data-toggle="tab">Muertes de mujeres por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab12" href="#p1muertes-tab" data-toggle="tab">Muertes de menores por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab13" href="#p1avad-tab" data-toggle="tab">AVAD</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab14" href="#p1costos-tab" data-toggle="tab">Costos</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="p1muertesm-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart11"></div>
+                                            <div id="legend1" class="legend"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p1muertes-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart12"></div>
+                                            <div id="legend2" class="legend"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p1avad-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart13"></div>
+                                            <div id="legend3" class="legend"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p1costos-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart14"></div>
+                                            <div id="legend4" class="legend"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="downloadCai1" method="get">
+                                    <button id="descargar1" type="submit" class="btn btn-primary btn-block">Descargar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Morbilidad menores de 5 años IRA
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-pills">
+                                    <li class="active">
+                                        <a id="tab21" href="#p2inc-tab" data-toggle="tab"># Casos(INCIDENCIA)</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab22" href="#p2morb-tab" data-toggle="tab"># Casos(Morbilidad)</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab23" href="#p2cai-tab" data-toggle="tab"># Casos(Morbilidad) por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab24" href="#p2avad-tab" data-toggle="tab">AVAD por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab25" href="#p2costos-tab" data-toggle="tab">Costos por CAI</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="p2inc-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart21"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p2morb-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart22"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p2cai-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart23"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p2avad-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart24"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p2costos-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart25"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="downloadCai2" method="get">
+                                    <button id="descargar2" type="submit" class="btn btn-primary btn-block">Descargar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Morbilidad mujeres mayores de 15 años IRA
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-pills">
+                                    <li class="active">
+                                        <a id="tab31" href="#p3inc-tab" data-toggle="tab"># Casos(INCIDENCIA)</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab32" href="#p3morb-tab" data-toggle="tab"># Casos(Morbilidad)</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab33" href="#p3cai-tab" data-toggle="tab"># Casos(Morbilidad) por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab34" href="#p3avad-tab" data-toggle="tab">AVAD por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab35" href="#p3costos-tab" data-toggle="tab">Costos por CAI</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="p3inc-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart31"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p3morb-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart32"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p3cai-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart33"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p3avad-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart34"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p3costos-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart35"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="downloadCai3" method="get">
+                                    <button id="descargar3" type="submit" class="btn btn-primary btn-block">Descargar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Morbilidad mujeres mayores de 15 años EPOC
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-pills">
+                                    <li class="active">
+                                        <a id="tab42" href="#p4morb-tab" data-toggle="tab"># Casos(Morbilidad)</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab43" href="#p4cai-tab" data-toggle="tab"># Casos(Morbilidad) por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab44" href="#p4avad-tab" data-toggle="tab">AVAD por CAI</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab45" href="#p4costos-tab" data-toggle="tab">Costos por CAI</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="p4morb-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart42"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p4cai-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart43"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p4avad-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart44"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p4costos-tab">
+                                        <div class="panel panel-default">
+                                            <div id="chart45"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="downloadCai4" method="get">
+                                    <button id="descargar4" type="submit" class="btn btn-primary btn-block">Descargar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col col-sm-12">
+                            <h3>Síganos</h3>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            Copyright &copy; Fuziontek S.A.S. 2016
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+        <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+            <a class="btn btn-primary" href="#page-top">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </div>
+
+        <!-- jQuery -->
+        <script src="../vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- File input JavaScript -->
+        <script src="../vendor/bootstrap-fileinput/js/fileinput.min.js"></script>
+        <script src="../vendor/bootstrap-fileinput/js/locales/es.js"></script>
+
+
+        <!-- Plugin JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+        <!-- Contact Form JavaScript -->
+        <script src="../js/jqBootstrapValidation.js"></script>
+
+        <!-- Theme JavaScript -->
+        <script src="../js/acces.js"></script>
+        <script src="../vendor/raphael/raphael.js"></script>
+        <script src="../vendor/morrisjs/morris.js"></script>
+        <script src="../js/consolidadocai.js"></script>
+
+    </body>
+
+</html>
