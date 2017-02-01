@@ -1,5 +1,6 @@
 package co.fuziontek;
 
+import co.fuziontek.web.BeanInsumos;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.apache.catalina.connector.Connector;
@@ -29,5 +30,11 @@ public class Application {
         });
         return factory;
     }
+    
+    @Bean
+    public BeanInsumos beanInsumos(){
+        return new BeanInsumos();
+    }
+    
 
 }

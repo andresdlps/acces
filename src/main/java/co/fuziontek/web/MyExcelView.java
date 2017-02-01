@@ -21,9 +21,7 @@ import org.springframework.web.servlet.view.document.AbstractXlsView;
  */
 public class MyExcelView extends AbstractXlsView
 {
-    
-    
-    
+       
     @Override
     protected void buildExcelDocument(Map<String, Object> map, Workbook workbook, HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         //VARIABLES REQUIRED IN MODEL
@@ -62,7 +60,7 @@ public class MyExcelView extends AbstractXlsView
                     cell.setCellType(HSSFCell.CELL_TYPE_NUMERIC);
                     cell.setCellValue(Double.parseDouble(value));
                 } else {
-                    HSSFRichTextString text = new HSSFRichTextString(value);                
+                    HSSFRichTextString text = new HSSFRichTextString(value.replace('.', ','));                
                     cell.setCellValue(text);                    
                 }
                 currentColumn++;

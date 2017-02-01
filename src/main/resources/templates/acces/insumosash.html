@@ -99,6 +99,10 @@
                             <a href="#step-4" type="button" class="btn btn-primary btn-circle" disabled="disabled">4</a>
                             <p>Insumos P parte 2</p>
                         </div>
+                        <div class="stepwizard-step">
+                            <a href="#step-5" type="button" class="btn btn-primary btn-circle" disabled="disabled">5</a>
+                            <p>Insumos Desnutrición</p>
+                        </div>
                     </div>
                 </div>
 
@@ -440,7 +444,7 @@
                         <div class="col-xs-12">
                             <div class="col-sm-4 col-sm-offset-1">
                                 <div class="form-group">
-                                    <label class="control-label">Casos de diarrea mayores de 5 años que se tratan en centro médicos</label>
+                                    <label class="control-label">Casos de diarrea en mayores de 5 años que se tratan en centro médicos</label>
                                     <input type="text" required="required" name="DiaCmMayor" pattern="[0-9]+([\\,][0-9]+)?%?"
                                            class="form-control" placeholder="Digite el valor" value="32,5"/>
                                     <div class="help-block with-errors"></div>
@@ -454,7 +458,7 @@
                                 <div class="form-group">
                                     <label class="control-label">Costo de las medicinas</label>
                                     <input type="text" required="required" name="ValMeds" pattern="[0-9]+([\\,][0-9]+)?%?"
-                                           class="form-control" placeholder="Digite el valor" value="8730"/>
+                                           class="form-control" placeholder="Digite el valor" value="8406"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
@@ -470,7 +474,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Tiempo dedicado a menores de 5 años</label>
+                                    <label class="control-label">Tiempo dedicado al cuidado de menores de 5 años</label>
                                     <input type="text" required="required" name="TiempoDed" pattern="[0-9]+([\\,][0-9]+)?%?"
                                            class="form-control" placeholder="Digite el valor" value="2"/>
                                     <div class="help-block with-errors"></div>
@@ -478,13 +482,13 @@
                             </div>
                             <div class="col-sm-4 col-sm-offset-1">
                                 <div class="form-group">
-                                    <label class="control-label">Horas diarias pérdidas por caso de enfermedad diarreica en adultos(ASH)</label>
+                                    <label class="control-label">Horas diarias pérdidas por caso de enfermedad diarreica en adultos (ASH)</label>
                                     <input type="text" required="required" name="TiempoPerd" pattern="[0-9]+([\\,][0-9]+)?%?"
                                            class="form-control" placeholder="Digite el valor" value="2"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Costo de cuidados de adultos con diarrea</label>
+                                    <label class="control-label">Costo de cuidados en adultos con diarrea</label>
                                     <input type="text" required="required" name="CostAdult" pattern="[0-9]+([\\,][0-9]+)?%?"
                                            class="form-control" placeholder="Digite el valor" value="2748"/>
                                     <div class="help-block with-errors"></div>
@@ -517,6 +521,307 @@
                         </div>
                         <div class ="row">
                             <div class ="col-sm-4 col-sm-offset-4">
+                                <button class="btn btn-primary btn-block nextBtn btn-lg" type="button" >Siguiente</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row setup-content" id="step-5">
+                        <h3></h3>
+                        <div class="col-xs-12">
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <div class="form-group">
+                                    <label class="control-label">Proporción de niños menores de 5 años con bajo peso</label>
+                                    <input type="text" required="required" name="BajoPesoHombres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="3,6"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Proporción de niñas menores de 5 años con bajo peso</label>
+                                    <input type="text" required="required" name="BajoPesoMujeres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="3,3"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Porcentaje de recien nacidos con bajo peso</label>
+                                    <input type="text" required="required" name="BajoPesoRecienNacidos" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="8,8"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Promedio de indice de masa corporal bajo para mujeres entre 15 y 29 años </label>
+                                    <input type="text" required="required" name="IMCMujeres15a29" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                            class="form-control" placeholder="Digite el valor" value="24,2"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Promedio de indice de masa corporal bajo para mujeres entre 30 y 44 años</label>
+                                    <input type="text" required="required" name="IMCMujeres30a44" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="4,9"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Muertes en el año de hombres a causa de Sarampion</label>
+                                    <input type="text" required="required" name="MuertesSarampionHombres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="639"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Muertes en el año de mujeres a causa de Sarampion</label>
+                                    <input type="text" required="required" name="MuertesSarampionMujeres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="639"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Muertes en el año de hombres a causa de Malaria</label>
+                                    <input type="text" required="required" name="MuertesMalariaHombres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="0"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Muertes en el año de mujeres a causa de Malaria</label>
+                                    <input type="text" required="required" name="MuertesMalariaMujeres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="1"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Muertes en el año de neonatales hombres</label>
+                                    <input type="text" required="required" name="MuertesNeonatalesHombres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="5161"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Muertes en el año de neonatales mujeres</label>
+                                    <input type="text" required="required" name="MuertesNeonatalesMujeres" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="3429"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Proporcion de mujeres entre 15 y 29 años con retraso en el crecimiento intrauterino</label>
+                                    <input type="text" required="required" name="IUGR15a29" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="1,8"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Proporcion de muertes neonatales debido a mujeres entre 15 y 29 años con retraso en el crecimiento intrauterino</label>
+                                    <input type="text" required="required" name="neonatalIUGR15a29" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="6"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Proporcion de mujeres entre 30 y 44 años con retraso en el crecimiento intrauterino</label>
+                                    <input type="text" required="required" name="IUGR30a44" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="1,8"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Proporcion de muertes neonatales debido a mujeres entre 30 y 44 años con retraso en el crecimiento intrauterino</label>
+                                    <input type="text" required="required" name="neonatalIUGR30a44" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="6"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <div class="form-group">
+                                    <label class="control-label">Proporcion de mujeres entre 15 y 29 años</label>
+                                    <input type="text" required="required" name="Mujeres15a29" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="0,56"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Minimo teorico: Prevalencia del bajo peso del niño en referencia a la población (Nivel 1)</label>
+                                    <input type="text" required="required" name="MTNivel1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="84,14"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Minimo teorico: Prevalencia del bajo peso del niño en referencia a la población (Nivel 2)</label>
+                                    <input type="text" required="required" name="MTNivel2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="13,59"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Minimo teorico: Prevalencia del bajo peso del niño en referencia a la población (Nivel 3)</label>
+                                    <input type="text" required="required" name="MTNivel3" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="2,14"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Minimo teorico: Prevalencia del bajo peso del niño en referencia a la población (Nivel 4)</label>
+                                    <input type="text" required="required" name="MTNivel4" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                           class="form-control" placeholder="Digite el valor" value="0,13"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para mortalidad por Diarrea</h4>
+                                </div>
+                                <label class="control-label col-sm-3">Nivel 1</label>
+                                <label class="control-label col-sm-3">Nivel 2</label>
+                                <label class="control-label col-sm-3">Nivel 3</label>
+                                <label class="control-label col-sm-3">Nivel 4</label>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRDiarrea1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRDiarrea2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="2,32"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRDiarrea3" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="5,39"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRDiarrea4" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="12,50"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para mortalidad por Malaria</h4>
+                                </div>
+                                <label class="control-label col-sm-3">Nivel 1</label>
+                                <label class="control-label col-sm-3">Nivel 2</label>
+                                <label class="control-label col-sm-3">Nivel 3</label>
+                                <label class="control-label col-sm-3">Nivel 4</label>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRMalaria1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRMalaria2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="2,12"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRMalaria3" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="4,48"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRMalaria4" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="9,49"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para mortalidad por Sarampión</h4>
+                                </div>
+                                <label class="control-label col-sm-3">Nivel 1</label>
+                                <label class="control-label col-sm-3">Nivel 2</label>
+                                <label class="control-label col-sm-3">Nivel 3</label>
+                                <label class="control-label col-sm-3">Nivel 4</label>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRSarampion1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRSarampion2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1,73"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRSarampion3" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="3,01"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRSarampion4" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="5,22"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para mortalidad por Infecciones Respiratorias Agudas</h4>
+                                </div>
+                                <label class="control-label col-sm-3">Nivel 1</label>
+                                <label class="control-label col-sm-3">Nivel 2</label>
+                                <label class="control-label col-sm-3">Nivel 3</label>
+                                <label class="control-label col-sm-3">Nivel 4</label>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRIRA1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRIRA2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="2,01"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRIRA3" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="4,01"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RRIRA4" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="8,09"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para mortalidad por otras Enfermedades</h4>
+                                </div>
+                                <label class="control-label col-sm-3">Nivel 1</label>
+                                <label class="control-label col-sm-3">Nivel 2</label>
+                                <label class="control-label col-sm-3">Nivel 3</label>
+                                <label class="control-label col-sm-3">Nivel 4</label>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RROtras1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RROtras2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="2,06"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RROtras3" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="4,24"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" required="required" name="RROtras4" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control" placeholder="Digite el valor" value="8,72"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para morbilidad por Diarrea</h4>
+                                </div>
+                                <label class="control-label col-sm-6">Nivel 1</label>
+                                <label class="control-label col-sm-6">Nivel 2</label>
+                                <div class="col-sm-6">
+                                    <input type="text" required="required" name="RRMorbDiarrea1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1,00"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" required="required" name="RRMorbDiarrea2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control" placeholder="Digite el valor" value="1,23"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <h4>Riesgo Relativo para morbilidad por Infecciones respiratorias agudas</h4>
+                                </div>
+                                <label class="control-label col-sm-6">Nivel 1</label>
+                                <label class="control-label col-sm-6">Nivel 2</label>
+                                <div class="col-sm-6">
+                                    <input type="text" required="required" name="RRMorbIRA1" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control " placeholder="Digite el valor" value="1,00"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" required="required" name="RRMorbIRA2" pattern="[0-9]+([\\,][0-9]+)?%?"
+                                               class="form-control" placeholder="Digite el valor" value="1,86"/>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class ="row">
+                            <div class ="col-sm-4 col-sm-offset-4">
                                 <button id="submitbtn" class="btn btn-success btn-block btn-lg pull-right" type="submit">Consolidar</button>
                             </div>
                         </div>
@@ -541,7 +846,7 @@
                                     <label>Valor</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    <input id="valor" type="text" value="1101600000"/>
+                                    <input id="valor" type="text" value="1101410000"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -549,7 +854,7 @@
                                     <label>Interes</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    <input id="interes" type="text" value="0,0362"/>
+                                    <input id="interes" type="text" value="0,0362013237"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -571,32 +876,6 @@
         </div>
 
         <footer class="text-center">
-            <div class="footer-above">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col col-sm-12">
-                            <h3>Síganos</h3>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="footer-below">
                 <div class="container">
                     <div class="row">

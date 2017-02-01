@@ -1,10 +1,14 @@
 package co.fuziontek.model;
 
+import java.util.Set;
+import java.util.TreeSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,11 +25,14 @@ public class Departamento {
     @Column(nullable = false)
     private String nombre;
     
+    @OneToMany( mappedBy="departamento", fetch = FetchType.LAZY)
+    Set<Poblacion> poblacion = new TreeSet<>();
+    
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Region region;
     
     @ManyToOne(cascade = CascadeType.PERSIST)
-    private Svca svca;
+    private Svca svca;   
     
     private double promedioPM10;
 

@@ -33,7 +33,7 @@ $("#identificacion-es").fileinput({
     showCaption: true,
     showRemove: false,
     uploadAsync: true,
-    allowedFileExtensions: ["xls", "xlsx"]
+    allowedFileExtensions: ["xls"]
 }).on('fileuploaded', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
@@ -53,7 +53,7 @@ $("#identificacionsvca-es").fileinput({
             showZoom: false,
             showUpload: false
     },
-    allowedFileExtensions: ["xls", "xlsx"]
+    allowedFileExtensions: ["xls"]
 }).on('fileuploaded', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;

@@ -76,30 +76,24 @@
             </div>
         </nav>
 
-        <section class="consolidado">
+        <section class="Datos">
             <div class="container">
                 <div class="panel panel-default">
-                <div class="panel-heading">
+                    <div class="panel-heading text-center">
                         <h3>Comparación con el PIB</h3>
-                </div>
-                <div class="row text-center">
-                    <div class="PIB">
-                        <label style="font-size: x-large">PIB = </label>
-                        <input type="text" name="PrevIra1" placeholder="Digite el PIB" value="800849"/>
                     </div>
-                    <!--<img src="../img/resultadogeneral.png"/>-->
-                </div>
-                    
-                <div class="row text-center">
-                    <div class="col-xs-6">
-                        <label style="font-size: x-large">Costos totales = </label>
-                        <label>16750</label>
+                    <div class="panel-body">   
+                        <div class="row text-center ">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <div class="well">
+                                    <div class="PIB">
+                                        <label style="font-size: medium">PIB (Miles de millones de pesos) = </label>
+                                        <input type="text" style="text-align:center;" id="PIB" placeholder="Digite el PIB" value="800849"/>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-6">
-                        <label style="font-size: x-large">Comparacion con El PIB = </label>
-                        <label>2.09%</label>
-                    </div>
-                </div>
                 </div>
             </div>
 
@@ -107,54 +101,165 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3>Participación Nacional</h3>
+                            <div class="panel-heading text-center">
+                                <h2>Costos CAU, CAI y ASH a nivel Nacional (Miles de millones de pesos)</h2>
                             </div>
-                            <div class="panel-body">
-                                <div id="chart1"></div>
+                            <div class="panel-body text-center">
+                                <div class="well">
+                                    <div class="row">
+                                        <label style="font-size: medium">Comparación con El PIB = </label>
+                                        <label id="comparacionPIB">2.09%</label>
+                                    </div>
+                                    <div class="row" style="padding-top: 20px">
+                                        <label style="font-size: medium">Costos totales por CAU, CAI y ASH = </label>
+                                        <label id="costosTotales">20692</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <div id="chart1"></div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding-top: 100px;">
+                                        <div class="alert alert-info">
+                                            <h2 id="chartinfo1">
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>   
-            </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="text-center">
-            <div class="footer-above">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <img class="logo" src="../img/dnp_logo.png"/>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <h2>Costos totales CAU (Miles de millones de pesos)</h2>
                             </div>
-                            <div class="row">
-                                <img class="logo" src="../img/bancomundial_logo.png"/>
+                            <div class="panel-body text-center">
+                                <div class="well">
+                                    <div class="row">
+                                        <label style="font-size: medium">Comparación con El PIB = </label>
+                                        <label id="comparacionPIBCau">2.09%</label>
+                                    </div>
+                                    <div class="row" style="padding-top: 20px">
+                                        <label style="font-size: medium">Costos totales por CAU = </label>
+                                        <label id="costosTotalesCau">20692</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <div id="chart2"></div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding-top: 90px;">
+                                        <div class="alert alert-info">
+                                            <h2 id="chartinfo2">
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <form action="downloadTotalCAU" method="get">
+                                            <button id="descargar2" type="submit" class="btn btn-consolidado btn-block">Descargar</button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="footer-col col-sm-6">
-                            <h3>Síganos</h3>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                                </li>
-                            </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <h2>Costos totales CAI (Miles de millones de pesos)</h2>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div class="well">
+                                    <div class="row">
+                                        <label style="font-size: medium">Comparación con El PIB = </label>
+                                        <label id="comparacionPIBCai">2.09%</label>
+                                    </div>
+                                    <div class="row" style="padding-top: 20px">
+                                        <label style="font-size: medium">Costos totales por CAI = </label>
+                                        <label id="costosTotalesCai">20692</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <div id="chart3"></div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding-top: 90px;">
+                                        <div class="alert alert-info">
+                                            <h2 id="chartinfo3">
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <form action="downloadTotalCAI" method="get">
+                                            <button id="descargar3" type="submit" class="btn btn-consolidado btn-block">Descargar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                <h2>Costos totales ASH (Miles de millones de pesos)</h2>
+                            </div>
+                            <div class="panel-body text-center">
+                                <div class="well">
+                                    <div class="row">
+                                        <label style="font-size: medium">Comparación con El PIB = </label>
+                                        <label id="comparacionPIBAsh">2.09%</label>
+                                    </div>
+                                    <div class="row" style="padding-top: 20px">
+                                        <label style="font-size: medium">Costos totales por ASH = </label>
+                                        <label id="costosTotalesAsh">20692</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="alert alert-warning">
+                                        <div id="desnutricion-warning">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-7">
+                                        <div id="chart4"></div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding-top: 90px;">
+                                        <div class="alert alert-info">
+                                            <h2 id="chartinfo4">
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <form action="downloadTotalASH" method="get">
+                                            <button id="descargar4" type="submit" class="btn btn-consolidado btn-block">Descargar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <footer class="text-center">
             <div class="footer-below">
                 <div class="container">
                     <div class="row">
@@ -196,7 +301,6 @@
         <script src="../js/acces.js"></script>
         <script src="../vendor/raphael/raphael.js"></script>
         <script src="../vendor/morrisjs/morris.js"></script>
-        <!--<script src="data/morris-data.js"></script>-->}
         <script src="../js/consolidadogeneral.js"></script>
 
     </body>

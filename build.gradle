@@ -41,6 +41,7 @@ dependencies {
     compile("org.springframework.security:spring-security-web")
 //    compile("javax.interceptor:javax.interceptor-api:1.+")
 //    compile("org.springframework.boot:spring-boot-starter-security")
+    compile ("org.apache.commons:commons-math3:3.6.1")
     compile("mysql:mysql-connector-java")
     compile("com.h2database:h2")
     testCompile('org.springframework.boot:spring-boot-starter-test')

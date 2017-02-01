@@ -23,6 +23,10 @@ public class ConsolidadoCau {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    private Double mortTodas;
+    private Double mortTodasAVAD;
+    private Double mortTodasMenores;
+    private Double mortTodasMenoresAVAD;
     private Double costosMortalidad;
     
     private Double RRbc;
@@ -46,6 +50,10 @@ public class ConsolidadoCau {
     private Double visitas;
     private Double visitasAVAD;
     private Double visitasCostos;
+    
+    private Double SR;
+    private Double SRAVAD;
+    private Double SRCostos;
     
     public ConsolidadoCau() {
     }
@@ -200,6 +208,62 @@ public class ConsolidadoCau {
 
     public void setVisitasCostos(Double visitasCostos) {
         this.visitasCostos = visitasCostos;
+    }
+
+    public Double getMortTodas() {
+        return mortTodas;
+    }
+
+    public void setMortTodas(Double mortTodas) {
+        this.mortTodas = mortTodas;
+    }
+
+    public Double getMortTodasAVAD() {
+        return mortTodasAVAD;
+    }
+
+    public void setMortTodasAVAD(Double mortTodasAVAD) {
+        this.mortTodasAVAD = mortTodasAVAD;
+    }
+
+    public Double getMortTodasMenores() {
+        return mortTodasMenores;
+    }
+
+    public void setMortTodasMenores(Double mortTodasMenores) {
+        this.mortTodasMenores = mortTodasMenores;
+    }
+
+    public Double getMortTodasMenoresAVAD() {
+        return mortTodasMenoresAVAD;
+    }
+
+    public void setMortTodasMenoresAVAD(Double mortTodasMenoresAVAD) {
+        this.mortTodasMenoresAVAD = mortTodasMenoresAVAD;
+    }
+
+    public Double getSR() {
+        return SR;
+    }
+
+    public void setSR(Double SR) {
+        this.SR = SR;
+    }
+
+    public Double getSRAVAD() {
+        return SRAVAD;
+    }
+
+    public void setSRAVAD(Double SRAVAD) {
+        this.SRAVAD = SRAVAD;
+    }
+
+    public Double getSRCostos() {
+        return SRCostos;
+    }
+
+    public void setSRCostos(Double SRCostos) {
+        this.SRCostos = SRCostos;
     }
     
     

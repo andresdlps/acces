@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 public class Poblacion {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     @Column(nullable = false)
@@ -36,7 +35,8 @@ public class Poblacion {
 
     public Poblacion() {}
 
-    public Poblacion(Integer total, Integer hombres, Integer mujeres, GrupoEtareo grupo_etareo, Departamento departamento) {
+    public Poblacion(Long Id, Integer total, Integer hombres, Integer mujeres, GrupoEtareo grupo_etareo, Departamento departamento) {
+        this.id = Id;
         this.total = total;
         this.hombres = hombres;
         this.mujeres = mujeres;

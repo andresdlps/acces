@@ -423,6 +423,70 @@ $(document).ready(function () {
 
 
     });
+    
+    
+    $.get('getMortDesnutricion', function (data) {
+        console.log(data);
+        var data2 = [];
+        for(var i=0; i < data.length; i++){
+            var mapa = {};
+            mapa['y']=data[i].enfermedad;
+            mapa['a']=data[i].muertesMenoresHombres;
+            data2.push(mapa)
+        }
+        
+        graph41 = Morris.Bar({
+            element: 'chart41',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['# casos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhover
+        });
+        
+        data2 = [];
+        for(var i=0; i < data.length; i++){
+            var mapa = {};
+            mapa['y']=data[i].enfermedad;
+            mapa['a']=data[i].muertesMenoresMujeres;
+            data2.push(mapa)
+        }
+        
+        graph42 = Morris.Bar({
+            element: 'chart42',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['# casos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhover
+        });
+        
+        data2 = [];
+        for(var i=0; i < data.length; i++){
+            var mapa = {};
+            mapa['y']=data[i].enfermedad;
+            mapa['a']=data[i].mortalidadMenoresCostos;
+            data2.push(mapa)
+        }
+        
+        graph43 = Morris.Bar({
+            element: 'chart43',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['Miles de millones de pesos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhover
+        });
+    });
 
     $('#tab11').on('shown.bs.tab', function (e) {
         graph1.redraw();
@@ -478,6 +542,18 @@ $(document).ready(function () {
 
     $('#tab35').on('shown.bs.tab', function (e) {
         graph35.redraw();
+    });
+    
+    $('#tab41').on('shown.bs.tab', function (e) {
+        graph41.redraw();
+    });
+
+    $('#tab42').on('shown.bs.tab', function (e) {
+        graph42.redraw();
+    });
+
+    $('#tab43').on('shown.bs.tab', function (e) {
+        graph43.redraw();
     });
 });
 

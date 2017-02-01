@@ -5,3 +5,4 @@
 /.gradle/2.10/taskArtifacts/fileSnapshots.bin
 /.gradle/2.10/taskArtifacts/fileHashes.bin
 /.gradle/2.10/taskArtifacts/outputFileStates.bin
+/build/

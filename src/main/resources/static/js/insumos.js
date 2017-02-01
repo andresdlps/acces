@@ -51,10 +51,11 @@ $('#submitbtn').submit(function e(){
 
 $('#ActualizarVEV').click(function (e){
     investmentAmount = Number(document.getElementById('valor').value);
-    annualInterestRate = Number(document.getElementById('interes').value);
+    annualInterestRate = Number(document.getElementById('interes').value.replace(/,/g, '.'));
     numberOfYears = Number(document.getElementById('periodo').value);
     console.log(Math.pow(1 + (annualInterestRate), numberOfYears));
     console.log(investmentAmount);
     console.log(investmentAmount * Math.pow(1 + (annualInterestRate), numberOfYears));
-    document.getElementById('VEV').value = parseInt(investmentAmount * Math.pow(1 + (annualInterestRate), numberOfYears));
+    document.getElementById('VEV').value = Math.round(investmentAmount * Math.pow(1 + (annualInterestRate), numberOfYears));
+    
 });

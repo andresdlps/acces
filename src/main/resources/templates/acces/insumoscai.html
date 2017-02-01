@@ -73,7 +73,7 @@
                 </div>
             </div>
         </nav>
-        <section class="insumosform">
+        <section class="Datos">
             <div class="container">
                 <div class ="row text-center">
                     <div class ="col-sm-12">
@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <h2 class="insumo-titulo">Prevalencia de IRA en menores a cinco años</h2>
+                                <h2 class="insumo-titulo">Prevalencia de IRA en menores de cinco años</h2>
                                 <div class="form-group">
                                     <label class="control-label">Region Caribe</label>
                                     <input type="text" name="PrevIra1" pattern="[0-9]+([\\,][0-9]+)?"
@@ -200,7 +200,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Registro individual de prestación de servicios de salud.</label>
+                                    <label class="control-label">Relación de incidencia de casos anuales por IRA niño/adulto..</label>
                                     <input type="text" required="required" name="Rips" pattern="[0-9]+([\\,][0-9]+)?"
                                             class="form-control" placeholder="Digite el valor" value="0,16666"/>
                                     <div class="help-block with-errors"></div>
@@ -244,31 +244,31 @@
                             </div>
                             <div class="col-sm-4 col-sm-offset-1">
                                 <div class="form-group">
-                                    <label class="control-label">Riesgo relativo - Cancer de pulmon</label>
+                                    <label class="control-label">Riesgo relativo - Cáncer de pulmón</label>
                                     <input type="text" required="required" name="RRcancer" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="1,5"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Riesgo relativo mayores a 30 - IRA </label>
+                                    <label class="control-label">Riesgo relativo mayores de 30 años - IRA </label>
                                     <input type="text" required="required" name="RRiraMayores" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="2"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Riesgo relativo menores a 5 - IRA</label>
+                                    <label class="control-label">Riesgo relativo menores de 5 - IRA</label>
                                     <input type="text" required="required" name="RRiraMenores" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="2"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">AVAD por caso de muerte por IRA </label>
+                                    <label class="control-label">AVAD para mortalidad por infecciones respiratorias agudas (IRA) </label>
                                     <input type="text" required="required" name="AVADIra1" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="34"/>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">AVAD por 100.000 casos de muerte por IRA </label>
+                                    <label class="control-label">AVAD para morbilidad por infecciones respiratorias agudas (IRA) </label>
                                     <input type="text" required="required" name="AVADIra2" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="165"/>
                                     <div class="help-block with-errors"></div>
@@ -300,9 +300,8 @@
                         </div>
                     </div>
                     <div class="row setup-content" id="step-3">
-                        <h3></h3>
                         <div class="col-xs-12">
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 col-sm-offset-1">
                                 <div class="row form-group">
                                     <label class="col-xs-12 control-label">Valor estadístico de la vida VEV</label>
                                     <label class="col-xs-1 text-right">$</label>
@@ -330,7 +329,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="row form-group">
-                                    <label class="col-xs-12 control-label">Costo de tiempo perdido por enfermedad </label>
+                                    <label class="col-xs-12 control-label">Costo del tiempo perdido por enfermedad </label>
                                     <label class="col-xs-1 text-right">$</label>
                                     <input class="col-xs-6" type="text" required="required" name="CTiempoPerd" pattern="[0-9]+([\\,][0-9]+)?"
                                            placeholder="Digite el valor" value="12933"/>
@@ -348,7 +347,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Porcentaje de casos de IRA, tratados en centros médicos </label>
+                                    <label class="control-label">Porcentaje de casos de IRA en menores de 5 años tratados en centros médicos </label>
                                     <input type="text" required="required" name="IRAPorcentaje" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="40"/>
                                     <div class="help-block with-errors"></div>
@@ -357,7 +356,7 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="col-sm-6 col-sm-offset-3">
-                                <h2>Porcentaje de casos de IRA, Menores de 5 años tratados en centros médicos.</h2>
+                                <h2>Porcentaje de casos de IRA, Menores de 5 años tratados en centros médicos</h2>
                                 <div class="form-group">
                                     <label class="control-label">Region Caribe</label>
                                     <input type="text" required="required" name="Ira1" pattern="[0-9]+([\\,][0-9]+)?"
@@ -413,7 +412,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Costo estimado de las medicinas para el tratamiento de IRA.</label>
+                                    <label class="control-label">Costo estimado de las medicinas para el tratamiento de IRA</label>
                                     <input type="text" required="required" name="CMedicinas" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="32347,27"/>
                                     <div class="help-block with-errors"></div>
@@ -439,7 +438,7 @@
                             </div>
                             <div class="col-sm-4 col-sm-offset-1">
                                 <div class="form-group">
-                                    <label class="control-label">Duración promedio de la hospitalización (días).</label>
+                                    <label class="control-label">Duración promedio de la hospitalización (días)</label>
                                     <input type="text" required="required" name="DurPromHosp" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="10"/>
                                     <div class="help-block with-errors"></div>
@@ -451,7 +450,7 @@
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Porcentaje de pacientes con EPOC atendidos en urgencias médicas.</label>
+                                    <label class="control-label">Porcentaje de pacientes con EPOC atendidos en urgencias médicas</label>
                                     <input type="text" required="required" name="PocentajeEPOCUrg" pattern="[0-9]+([\\,][0-9]+)?"
                                            class="form-control" placeholder="Digite el valor" value="15"/>
                                     <div class="help-block with-errors"></div>
@@ -525,32 +524,6 @@
         </div>
 
         <footer class="text-center">
-            <div class="footer-above">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col col-sm-12">
-                            <h3>Síganos</h3>
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="footer-below">
                 <div class="container">
                     <div class="row">

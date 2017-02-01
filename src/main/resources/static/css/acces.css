@@ -693,3 +693,55 @@ p.error {
   vertical-align: middle;
   border-radius: 1px;
 }
+
+.ayuda{
+  padding-top: 150px;  
+}
+
+.help-logos{
+    height: 150px; 
+    width: 200px
+}
+
+.btn-consolidado {
+  color: white;
+  background-color: #337ab7;
+  border-color: #337ab7;
+  font-weight: 700;
+}
+.btn-consolidado:hover,
+.btn-consolidado:focus,
+.btn-consolidado:active,
+.btn-consolidado.active,
+.open .dropdown-toggle.btn-consolidado {
+  color: white;
+  background-color: #1a242f;
+  border-color: #161f29;
+}
+.btn-consolidado:active,
+.btn-consolidado.active,
+.open .dropdown-toggle.btn-consolidado {
+  background-image: none;
+}
+.btn-consolidado.disabled,
+.btn-consolidado[disabled],
+fieldset[disabled] .btn-consolidado,
+.btn-consolidado.disabled:hover,
+.btn-consolidado[disabled]:hover,
+fieldset[disabled] .btn-consolidado:hover,
+.btn-consolidado.disabled:focus,
+.btn-consolidado[disabled]:focus,
+fieldset[disabled] .btn-consolidado:focus,
+.btn-consolidado.disabled:active,
+.btn-consolidado[disabled]:active,
+fieldset[disabled] .btn-consolidado:active,
+.btn-consolidado.disabled.active,
+.btn-consolidado[disabled].active,
+fieldset[disabled] .btn-consolidado.active {
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+.btn-consolidado .badge {
+  color:#337ab7;
+  background-color: white;
+}
