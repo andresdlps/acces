@@ -33,6 +33,8 @@ public class Estacion {
     public Estacion(String nombre, Departamento departamento) {
         this.nombre = nombre;
         this.departamento = departamento;
+        this.sumaPm10 = 0.0;
+        this.count = 0l;
     }
     
     

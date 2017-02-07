@@ -396,6 +396,7 @@ public class ConsolidadoController {
                 
 //                System.out.println(enf + " -> " + RR1 + " " + RR2 + " " + RR3 + " " + RR4);
                 
+                
                 double sumaprodH = (RR1*uwexposure1hombres) + (RR2*uwexposure2hombres) + (RR3*uwexposure3hombres) +(RR4*uwexposure4hombres);
                 double sumaprodM = (RR1*uwexposure1mujeres) + (RR2*uwexposure2mujeres) + (RR3*uwexposure3mujeres) +(RR4*uwexposure4mujeres);
                 double sumaprodMT = (RR1*MTNivel1) + (RR2*MTNivel2) + (RR3*MTNivel3) + (RR4*MTNivel4);
@@ -408,7 +409,8 @@ public class ConsolidadoController {
                 FAmujeres = (sumaprodM - sumaprodMT)/sumaprodM;
             }
             
-//            System.err.println(enf + " ->  FA " + FAhombres + " " + FAmujeres);
+            System.err.println(enf + " ->  FA " + FAhombres + " " + FAmujeres);
+            System.err.println("MUERTES HOMBRES  = " + muerteshombres + " MUJERES = " + muertesmujeres);
             
             MortalidadDesnutricion desnutricion = new MortalidadDesnutricion(enf, (FAhombres*muerteshombres), (FAmujeres*muertesmujeres));
             desnutricion.setMortalidadMenoresCostos((desnutricion.getMuertesMenoresTotal()*format.parse(allRequestParams.get("VEV")).doubleValue())/1000000000.0f);
@@ -736,12 +738,15 @@ public class ConsolidadoController {
                     totalmuertesMenor5 += mort.getHombres1a4() + mort.getMujeres1a4() + mort.getIndeterminado1a4()
                             + mort.getHombres1menor() + mort.getMujeres1menor() + mort.getIndeterminado1menor();
                 }
+                System.err.println("Muertes hasta aqui --> " + totalmuertes);
             }
             promedioPm10 /= poblacionTotal;
+//            promedioPm10 = ((double)Math.round(promedioPm10*100)/100.0f);
+            
 
             System.err.printf("Svca %s -------->\t\t %d %d \n", svca.getNombre(), totalmuertes, totalmuertesMenor5);
-//            System.err.printf("Svca %s ->\t\t %d \t %d \t %d \t %d \n", svca.getNombre(), poblacionTotal45a64_206, poblacionTotalMayor65_206, poblacionTotal45a64_800, poblacionTotalMayor65_800);
-            System.err.printf("Svca %s ->\t\t %.2f \t\t %d \t\t %d \t\t %d \n", svca.getNombre(), promedioPm10, poblacionTotal, poblacionTotalMenor5, poblacionTotal45a64);
+            System.err.printf("Svca %s ->\t\t %d \t %d \t %d \t %d \n", svca.getNombre(), poblacionTotal45a64_206, poblacionTotalMayor65_206, poblacionTotal45a64_800, poblacionTotalMayor65_800);
+            System.err.printf("Svca %s ->\t\t %f \t\t %d \t\t %d \t\t %d \t\t %d \n", svca.getNombre(), promedioPm10, poblacionTotal, poblacionTotalMenor5, poblacionTotal45a64, poblacionTotalMayor65);
 
             double pm25 = format.parse(allRequestParams.get("PM25Basal")).doubleValue();
             double pm10 = format.parse(allRequestParams.get("PM10Basal")).doubleValue();
@@ -762,7 +767,7 @@ public class ConsolidadoController {
             double RRTodasEnfermedadesMenores = Math.exp(drTodasMenores * (promedioPm10 - pm10));
             double FATodasEnfermedadesMenores = (RRTodasEnfermedadesMenores - 1.0f) / RRTodasEnfermedadesMenores;
 
-            System.err.println(" ------ " + RRTodasEnfermedades + " " + FATodasEnfermedades + " " + RRTodasEnfermedadesMenores + " " + FATodasEnfermedadesMenores);
+//            System.err.println(" ------ " + RRTodasEnfermedades + " " + FATodasEnfermedades + " " + RRTodasEnfermedadesMenores + " " + FATodasEnfermedadesMenores);
 
             long enfermedadids[] = {206, 800};
             ConsolidadoCau cau = new ConsolidadoCau();
@@ -791,7 +796,7 @@ public class ConsolidadoController {
             cau.setMortTodasMenoresAVAD(cau.getMortTodasMenores() * format.parse(allRequestParams.get("AVAD")).doubleValue() / 10000.0f);
 
             cau.setCostosMortalidad(format.parse(allRequestParams.get("VEV")).doubleValue() * ((suma + cau.getMortTodas() + cau.getMortTodasMenores()) / 1000000000.0));
-            System.err.println("COSTOS MORTALIDAD " + cau.getCostosMortalidad());
+//            System.err.println("COSTOS MORTALIDAD " + cau.getCostosMortalidad());
 
             double DRbc = format.parse(allRequestParams.get("DRBronquitis")).doubleValue() / 100f;
             double incBC = format.parse(allRequestParams.get("IncBC")).doubleValue();
@@ -805,7 +810,7 @@ public class ConsolidadoController {
             double costoTiempoPerdido = format.parse(allRequestParams.get("CTiempoPerd")).doubleValue();
             double visitasBC = format.parse(allRequestParams.get("VisitasBC")).doubleValue();
             double costoConsulta = format.parse(allRequestParams.get("CConsulta")).doubleValue();
-            double porcentajeUrgBC = format.parse(allRequestParams.get("UrgenciasBC")).doubleValue();
+            double porcentajeUrgBC = format.parse(allRequestParams.get("UrgenciasBC")).doubleValue() / 100f;
             double costoUrgencias = format.parse(allRequestParams.get("CUrg")).doubleValue();
             double DRMorbDAR = format.parse(allRequestParams.get("DRDAR")).doubleValue();
             double AVADDAR = format.parse(allRequestParams.get("AVADDAR")).doubleValue();
@@ -829,8 +834,8 @@ public class ConsolidadoController {
             cau.setRRbc(Math.exp((promedioPm10 - pm10) * (DRbc)));
             cau.setFAbc((cau.getRRbc() - 1.0f) / cau.getRRbc());
 
-            System.err.println(DRbc + " ***** " + pm10);
-            System.err.println("BRONQUITIS CRONICA ->  " + cau.getRRbc() + " " + cau.getFAbc());
+//            System.err.println(DRbc + " ***** " + pm10);
+//            System.err.println("BRONQUITIS CRONICA ->  " + cau.getRRbc() + " " + cau.getFAbc());
 
             cau.setMorbBC(((cau.getFAbc() * incBC) / 100000.0f) * (poblacionTotal45a64 + poblacionTotalMayor65));
             cau.setMorbBCAVAD(cau.getMorbBC() * avadBC / 10000.0f);
@@ -1135,7 +1140,7 @@ public class ConsolidadoController {
         List<String> headers = new ArrayList<String>();
         headers.add("Causas");
         headers.add("Mortalidad por desnutrición en hombres");
-        headers.add("Mortalidad por desnutrición en hombres");
+        headers.add("Mortalidad por desnutrición en mujeres");
         headers.add("Costos mortalidad por desnutrición para hombres y mujeres (Miles de millones de pesos)");
         model.put("headers", headers);
         //Results Table (List<Object[]>)
@@ -1143,14 +1148,42 @@ public class ConsolidadoController {
         for (MortalidadDesnutricion consolidado : mortdesnutricionDAO.findAll()) {
             List<String> l = new ArrayList<String>();
             l.add(consolidado.getEnfermedad());
-            l.add(String.format("%.2f", consolidado.getMuertesMenoresHombres()));
-            l.add(String.format("%.2f", consolidado.getMuertesMenoresMujeres()));
-            l.add(String.format("%.2f", consolidado.getMortalidadMenoresCostos()));
+            l.add(String.format("%.6f", consolidado.getMuertesMenoresHombres()));
+            l.add(String.format("%.6f", consolidado.getMuertesMenoresMujeres()));
+            l.add(String.format("%.6f", consolidado.getMortalidadMenoresCostos()));
             results.add(l);
         }
         model.put("results", results);
         response.setContentType("application/ms-excel");
         response.setHeader("Content-disposition", "attachment; filename=MortalidadDesnutricion.xls");
+        return new ModelAndView(new MyExcelView(), model);
+    }
+    
+    @RequestMapping(value = "/acces/downloadAsh5")
+    public ModelAndView getAsh5(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        Map<String, Object> model = new HashMap<String, Object>();
+        //Sheet Name
+        model.put("sheetname", "MorbilidadDesnutricion");
+        //Headers List
+        List<String> headers = new ArrayList<String>();
+        headers.add("Causas");
+        headers.add("Morbilidad en hombres y mujeres menores a 5 años por desnutrición");
+        headers.add("AVAD Morbilidad en hombres y mujeres menores a 5 años por desnutrición");
+        headers.add("Costos Morbilidad en hombres y mujeres menores a 5 años por desnutrición (Miles de millones de pesos)");
+        model.put("headers", headers);
+        //Results Table (List<Object[]>)
+        List<List<String>> results = new ArrayList<List<String>>();
+        for (MorbilidadDesnutricion consolidado : morbdesnutricionDAO.findAll()) {
+            List<String> l = new ArrayList<String>();
+            l.add(consolidado.getEnfermedad());
+            l.add(String.format("%.2f", consolidado.getMorbilidadMenores5Total()));
+            l.add(String.format("%.2f", consolidado.getMorbilidadMenores5AVAD()));
+            l.add(String.format("%.2f", consolidado.getMorbilidadMenores5Costos()));
+            results.add(l);
+        }
+        model.put("results", results);
+        response.setContentType("application/ms-excel");
+        response.setHeader("Content-disposition", "attachment; filename=MorbilidadDesnutricion.xls");
         return new ModelAndView(new MyExcelView(), model);
     }
 
@@ -1193,6 +1226,8 @@ public class ConsolidadoController {
         response.setHeader("Content-disposition", "attachment; filename=MortalidadCai.xls");
         return new ModelAndView(new MyExcelView(), model);
     }
+    
+    
 
     @RequestMapping(value = "/acces/downloadCai2")
     public ModelAndView getCai2(HttpServletRequest request, HttpServletResponse response) throws SQLException {
@@ -1310,6 +1345,8 @@ public class ConsolidadoController {
         headers.add("AVAD para Mortalidad por CAU en Mayores de 45 años");
         headers.add("Mortalidad por CAU en todas las causas todas las edades");
         headers.add("AVAD para Mortalidad por CAU en todas las causas todas las edades");
+        headers.add("Mortalidad por CAU en todas las causas menores de 5 años");
+        headers.add("AVAD para Mortalidad por CAU en todas las causas menores de 5 años");
         headers.add("Costos en mortalidad por CAU (Miles de millones de pesos)");
         model.put("headers", headers);
         //Results Table (List<Object[]>)
@@ -1317,19 +1354,32 @@ public class ConsolidadoController {
         long svcaid = 0;
         Svca r = null;
         for (MortalidadConsolidadoCau consolidado : mortconsolidadoCauDAO.findAll()) {
+            List<String> l = new ArrayList<String>();
             if ((svcaid) % 2 == 0) {
                 r = svcaDao.findOne(((svcaid) / 2) + 1);
                 System.err.println((((svcaid) / 2) + 1));
                 System.err.println(r.getNombre());
+                l.add(r.getNombre());
+                l.add(String.format("%s", consolidado.getEnfermedad().getNombre()));
+                l.add(String.format("%.2f", consolidado.getMortMayores45()));
+                l.add(String.format("%.2f", consolidado.getMortAvadMayor45()));
+                l.add(String.format("%.2f", consolidado.getCau().getMortTodas()));
+                l.add(String.format("%.2f", consolidado.getCau().getMortTodasAVAD()));
+                l.add(String.format("%.2f", consolidado.getCau().getMortTodasMenores()));
+                l.add(String.format("%.2f", consolidado.getCau().getMortTodasMenoresAVAD()));
+                l.add(String.format("%.2f", consolidado.getCau().getCostosMortalidad()));
+            }else{
+                l.add(r.getNombre());
+                l.add(String.format("%s", consolidado.getEnfermedad().getNombre()));
+                l.add(String.format("%.2f", consolidado.getMortMayores45()));
+                l.add(String.format("%.2f", consolidado.getMortAvadMayor45()));
+                l.add("");
+                l.add("");
+                l.add("");
+                l.add("");
+                l.add("");
             }
-            List<String> l = new ArrayList<String>();
-            l.add(r.getNombre());
-            l.add(String.format("%s", consolidado.getEnfermedad().getNombre()));
-            l.add(String.format("%.2f", consolidado.getMortMayores45()));
-            l.add(String.format("%.2f", consolidado.getMortAvadMayor45()));
-            l.add(String.format("%.2f", consolidado.getCau().getMortTodas()));
-            l.add(String.format("%.2f", consolidado.getCau().getMortTodasAVAD()));
-            l.add(String.format("%.2f", consolidado.getCau().getCostosMortalidad()));
+            
             results.add(l);
             svcaid++;
         }
@@ -1660,51 +1710,82 @@ public class ConsolidadoController {
     public String uploadPM10(@RequestParam("file") MultipartFile uploadfile) throws Exception {
         StringBuilder message = new StringBuilder();
         BufferedReader br = new BufferedReader(new InputStreamReader(uploadfile.getInputStream()));
+        
+        for (Estacion e : estacionDao.findAll()) {
+            e.setSumaPm10(0.0);
+            e.setCount(0l);
+            estacionDao.save(e);
+        }
+//        
+//        for (Departamento dep : departamentoDao.findAll()) {
+//            dep.setPromedioPM10(0);
+//            departamentoDao.save(dep);
+//        }
+        
         Estacion estacion = null;
+        String separator = ",";
         long count = 0;
+        long linescount = 0;
         double sum = 0;
         while (br.ready()) {
             String s = br.readLine();
-            if (s.split(";").length < 2)continue;
+            linescount++;
+            if (s.split(separator).length < 2)continue;
             if (s.contains("Fecha")) {
                 if (count > 0) {
-                    estacion.setSumaPm10(sum);
-                    estacion.setCount(count);
+                    estacion.setSumaPm10(estacion.getSumaPm10() + sum);
+                    estacion.setCount(estacion.getCount() + count);
+//                    System.err.println("ESTACION -> " + estacion.getNombre() + " -  " + estacion.getSumaPm10() + " " + estacion.getCount());
                     estacionDao.save(estacion);
+                    count = 0;
+                    sum = 0;
                 }
-                if (s.split(";")[1].split("_").length < 2)continue;
-                logger.info(s.split(";")[1].split("_")[1]);
-                estacion = estacionDao.findByNombre(s.split(";")[1].split("_")[1]);
-                if (estacion == null && !s.split(";")[1].split("_")[1].isEmpty()) {
-                    message.append(" La estacion " + s.split(";")[1].split("_")[1] + " fue ignorada debido a que no se encuentra en la base de datos <br/>");
+                if (s.split(separator)[1].split("_").length < 2)continue;
+                logger.info(s.split(separator)[1].split("_")[1]);
+                estacion = estacionDao.findByNombre(s.split(separator)[1].split("_")[1]);
+                if (estacion == null && !s.split(separator)[1].split("_")[1].isEmpty()) {
+                    System.err.println("NO SE ENCUENTRA LA ESTACION -> " + s.split(separator)[1].split("_")[1]);
+                    message.append(" La estacion " + s.split(separator)[1].split("_")[1] + " fue ignorada debido a que no se encuentra en la base de datos <br/>");
                 }
                 count = 0;
                 sum = 0;
             } else {
 //                logger.info(s.split(";")[1].split("_")[1]);
-                if (s.split(";")[1].contains("NA") || estacion==null) {
+                if (s.split(separator)[1].contains("NA") || estacion==null) {
                     continue;
                 }
-                sum += Double.parseDouble(s.split(";")[1]);
+                sum += Double.parseDouble(s.split(separator)[1]);
                 count++;
             }
         }
+        
+        System.err.println("CONTEO DE LINEAS = " + linescount);
         if (count > 0) {
-            estacion.setSumaPm10(sum);
-            estacion.setCount(count);
+            estacion.setSumaPm10(estacion.getSumaPm10() + sum);
+            estacion.setCount(estacion.getCount() + count);
+//            System.err.println("ESTACION -> " + estacion.getNombre() + " -  " + estacion.getSumaPm10() + " " + estacion.getCount());
             estacionDao.save(estacion);
+            count = 0;
+            sum = 0;
         }
 
         for (Departamento dep : departamentoDao.findAll()) {
             count = 0;
             sum = 0;
+            double promedio = 0;
             List<Estacion> list = estacionDao.findByDepartamento(dep);
             for (Estacion est : list) {
                 sum += est.getSumaPm10();
                 count += est.getCount();
+                System.err.println("ESTACION -> " + est.getNombre() + " -  " + est.getSumaPm10() + " " + est.getCount());
             }
             if (list.size() > 0) {
-                dep.setPromedioPM10(sum / count);
+                if(count !=0){
+                    dep.setPromedioPM10(sum / count);
+                }else{
+                    dep.setPromedioPM10(0.0);
+                }
+                System.err.println("DEPARTAMENTO -> " +dep.getNombre() + "  PM10  = " + dep.getPromedioPM10());
                 departamentoDao.save(dep);
             }
         }

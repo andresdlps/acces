@@ -365,6 +365,14 @@ public class MainController {
     }
 
     private void cargarSvca(HSSFWorkbook wb) throws Exception {
+        for (Departamento dep : departamentoDao.findAll()) {
+            if(dep.getSvca()!=null){
+                dep.setSvca(null);
+                dep.setPromedioPM10(0);
+                departamentoDao.save(dep);
+            }
+        }
+        
         Sheet sheet = wb.getSheetAt(0);
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
             Departamento dep = departamentoDao.findOne((long)sheet.getRow(i).getCell(3).getNumericCellValue());

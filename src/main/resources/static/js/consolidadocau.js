@@ -116,12 +116,52 @@ $(document).ready(function () {
         for(var i=0; i < data.length; i+=2){
             var mapa = {};
             mapa['y']=svs[i/2].nombre;
-            mapa['a']=data[i].cau.costosMortalidad;
+            mapa['a']=data[i].cau.mortTodas;
             data2.push(mapa)
         }
         
         graph15 = Morris.Bar({
             element: 'chart15',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['#casos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhovermort
+        });
+        
+        data2 = [];
+        for(var i=0; i < data.length; i+=2){
+            var mapa = {};
+            mapa['y']=svs[i/2].nombre;
+            mapa['a']=data[i].cau.mortTodasAVAD;
+            data2.push(mapa)
+        }
+        
+        graph16 = Morris.Bar({
+            element: 'chart16',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['#casos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhovermort
+        });
+        
+        data2 = [];
+        for(var i=0; i < data.length; i+=2){
+            var mapa = {};
+            mapa['y']=svs[i/2].nombre;
+            mapa['a']=data[i].cau.costosMortalidad;
+            data2.push(mapa)
+        }
+        
+        graph17 = Morris.Bar({
+            element: 'chart17',
             data: data2,
             xkey: 'y',
             ykeys: ['a'],
@@ -517,6 +557,14 @@ $(document).ready(function () {
     
     $('#tab15').on('shown.bs.tab', function (e) {
         graph15.redraw();
+    });
+    
+    $('#tab16').on('shown.bs.tab', function (e) {
+        graph16.redraw();
+    });
+    
+    $('#tab17').on('shown.bs.tab', function (e) {
+        graph17.redraw();
     });
         
     $('#tab21').on('shown.bs.tab', function (e) {

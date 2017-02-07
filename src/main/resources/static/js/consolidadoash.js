@@ -16,6 +16,81 @@ $(document).ready(function () {
         return "<div class='morris-hover-row-label'>"+ row.y +"</div><div class='morris-hover-point' style='color: #b52430'>" + options.labels[0] + " : " + Number(row.a).formatMoney(2, ',', '.') + "</div>";
      }
      
+     $.get('hasConsolidadoCai', function (data) {
+         if(!data){
+             $('#panelMorbilidad').hide();
+         }
+     });
+     
+     $.get('getMorbDesnutricion', function (data) {
+         console.log(data);
+         if(data[1].morbilidadMenores5Costos === 0){
+             $('#panelMorbilidad').hide();
+         }
+         
+        var data2 = [];
+        for(var i=0; i < data.length; i++){
+            var mapa = {};
+            mapa['y']=data[i].enfermedad;
+            mapa['a']=data[i].morbilidadMenores5Total;
+            data2.push(mapa)
+        }
+        
+        graph51 = Morris.Bar({
+            element: 'chart51',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['# casos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhover
+        });
+        
+        data2 = [];
+        for(var i=0; i < data.length; i++){
+            var mapa = {};
+            mapa['y']=data[i].enfermedad;
+            mapa['a']=data[i].morbilidadMenores5AVAD;
+            data2.push(mapa)
+        }
+        
+        graph52 = Morris.Bar({
+            element: 'chart52',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['# casos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhover
+        });
+        
+        data2 = [];
+        for(var i=0; i < data.length; i++){
+            var mapa = {};
+            mapa['y']=data[i].enfermedad;
+            mapa['a']=data[i].morbilidadMenores5Costos;
+            data2.push(mapa)
+        }
+        
+        graph53 = Morris.Bar({
+            element: 'chart53',
+            data: data2,
+            xkey: 'y',
+            ykeys: ['a'],
+            labels: ['Miles de millones de pesos'],
+            barColors: ['#b52430'],
+            hideHover: 'auto',
+            resize: true,
+            hoverCallback: customhover
+        });
+     });
+     
+     
+     
     $.get('getConsolidadoAsh', function (data) {
         console.log(data);
         graph1 = Morris.Bar({
@@ -554,6 +629,18 @@ $(document).ready(function () {
 
     $('#tab43').on('shown.bs.tab', function (e) {
         graph43.redraw();
+    });
+    
+    $('#tab51').on('shown.bs.tab', function (e) {
+        graph51.redraw();
+    });
+
+    $('#tab52').on('shown.bs.tab', function (e) {
+        graph52.redraw();
+    });
+
+    $('#tab53').on('shown.bs.tab', function (e) {
+        graph53.redraw();
     });
 });
 

@@ -287,6 +287,50 @@
                         </div>
                     </div>
                     
+                    <div id="panelMorbilidad" class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">
+                                Morbilidad por desnutricion en menores de 5 años
+                            </div>
+                            <div class="panel-body">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-pills">
+                                    <li class="active">
+                                        <a id="tab51" href="#p5tab1" data-toggle="tab"># Casos total hombres y mujeres</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab52" href="#p5tab2" data-toggle="tab"># Casos AVAD</a>
+                                    </li>
+                                    <li>
+                                        <a id="tab53" href="#p5tab3" data-toggle="tab"># Costos totales</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane fade in active" id="p5tab1">
+                                        <div class="panel panel-default">
+                                            <div id="chart51"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p5tab2">
+                                        <div class="panel panel-default">
+                                            <div id="chart52"></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="p5tab3">
+                                        <div class="panel panel-default">
+                                            <div id="chart53"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="downloadAsh5" method="get">
+                                    <button id="descargar5" type="submit" class="btn btn-primary btn-block">Descargar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </section>
